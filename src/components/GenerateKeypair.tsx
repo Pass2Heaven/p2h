@@ -13,6 +13,24 @@ const GenerateKeypair = () => {
     setPublicKey(bytesToHex(ed25519.getPublicKey(privateKeyBytes)));
   }
 
+  function exportKeypair() {
+    alert(
+      "Keep the key pair safe! Owning the key pair means gaining access to all wills for its public key."
+    );
+    const jsonData = JSON.stringify({
+      privateKey: privateKey(),
+      publicKey: publicKey(),
+    });
+    const blob = new Blob([jsonData], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "p2h_keys.json";
+    link.click();
+    URL.revokeObjectURL(url);
+  }
+
   return (
     <article>
       <header>Generate keypair</header>
@@ -29,7 +47,13 @@ const GenerateKeypair = () => {
 
       <div role="group">
         <button class="">Use these keys</button>
-        <button class="secondary">Download keys</button>
+        <button
+          class="secondary"
+          onclick={exportKeypair}
+          disabled={privateKey() === ""}
+        >
+          Download keys
+        </button>
         <button class="secondary">Clear generated keys</button>
       </div>
       <footer>Be aware! Keys are erased when you restart the page.</footer>
