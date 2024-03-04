@@ -4,10 +4,9 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "start": "vite",
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
+    "dev": "bunx --bun vite",
+    "build": "bunx --bun vite build",
+    "serve": "bunx --bun vite preview"
   },
   "devDependencies": {
     "sass": "^1.71.1",
