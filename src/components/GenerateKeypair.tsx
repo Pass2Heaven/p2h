@@ -13,6 +13,11 @@ const GenerateKeypair = () => {
     setPublicKey(bytesToHex(ed25519.getPublicKey(privateKeyBytes)));
   }
 
+  function clearKeypair() {
+    setPrivateKey("");
+    setPublicKey("");
+  }
+
   function exportKeypair() {
     alert(
       "Keep the key pair safe! Owning the key pair means gaining access to all wills for its public key."
@@ -54,7 +59,13 @@ const GenerateKeypair = () => {
         >
           Download keys
         </button>
-        <button class="secondary">Clear generated keys</button>
+        <button
+          class="secondary"
+          onclick={clearKeypair}
+          disabled={privateKey() === ""}
+        >
+          Clear generated keys
+        </button>
       </div>
       <footer>Be aware! Keys are erased when you restart the page.</footer>
     </article>
