@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import GenerateKeypair from "./components/GenerateKeypair";
 import ImportKeypair from "./components/ImportKeypair";
 import { KeypairContextProvider } from "./contexts/KeypairContextProvider";
+import SendWill from "./components/SendWill";
 
 const App: Component = () => {
   return (
@@ -12,6 +13,7 @@ const App: Component = () => {
       <KeypairContextProvider>
         <GenerateKeypair />
         <ImportKeypair />
+        <SendWill />
       </KeypairContextProvider>
     </div>
   );
