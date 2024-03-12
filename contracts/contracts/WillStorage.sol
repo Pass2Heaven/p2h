@@ -5,7 +5,7 @@ pragma solidity ^0.8.24;
 // https://github.com/fravoll/solidity-patterns/blob/master/EternalStorage/EternalStorage.sol
 contract WillStorage {
     address owner = msg.sender;
-    address public latestVersion;
+    address latestVersion;
 
     mapping(bytes32 => uint) uIntStorage;
     mapping(bytes32 => string) stringStorage;
@@ -32,7 +32,10 @@ contract WillStorage {
         uIntStorage[_key] = _value;
     }
 
-    function setString(bytes32 _key, string memory _value) external onlyLatestVersion {
+    function setString(
+        bytes32 _key,
+        string memory _value
+    ) external onlyLatestVersion {
         stringStorage[_key] = _value;
     }
 }
